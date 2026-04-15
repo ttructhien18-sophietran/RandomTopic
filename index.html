@@ -4068,26 +4068,23 @@ const NATURE_NAMES = [
 // currentContribUser shape: { displayName, username, isAnonymous, userId, provider }
 let currentContribUser = null;
 
-// --- Supabase JS client (needed for OAuth) ---
+// --- Supabase JS client ---
 let _sbClient = null;
 
 function getSupabaseJsClient() {
     if (_sbClient) return _sbClient;
 
-    // 1. Khai báo các Placeholder (Vercel sẽ điền vào đây sau)
-    const VERCEL_URL = "VITE_SUPABASE_URL_PLACEHOLDER";
-    const VERCEL_ANON = "VITE_SUPABASE_KEY_PLACEHOLDER";
+    // Cách thực dụng: Nếu là localhost thì dùng config, nếu không thì dùng Key thật
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
-    // 2. Kiểm tra: Ưu tiên lấy từ config.js (local), nếu không có thì lấy Placeholder (Vercel)
-    const finalUrl = (typeof config !== 'undefined') ? config.SUPABASE_URL : VERCEL_URL;
-    const finalAnon = (typeof config !== 'undefined') ? config.SUPABASE_ANON_KEY : VERCEL_ANON;
+    const URL = isLocal ? config.SUPABASE_URL : 'DÁN_URL_THẬT_CỦA_BẠN_VÀO_ĐÂY';
+    const KEY = isLocal ? config.SUPABASE_ANON_KEY : 'DÁN_KEY_THẬT_CỦA_BẠN_VÀO_ĐÂY';
 
-    if (window.supabase && finalUrl && finalAnon) {
-        _sbClient = window.supabase.createClient(finalUrl, finalAnon);
+    if (window.supabase && URL && KEY) {
+        _sbClient = window.supabase.createClient(URL, KEY);
     }
     return _sbClient;
 }
-
 // ── Profiles REST helpers ──
 async function profilesLookup(username) {
   try {
