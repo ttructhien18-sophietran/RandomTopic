@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:dribbble.com)",
+      "Bash(npx --version)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(ffmpeg -version)",
+      "Bash(where ffmpeg:*)",
+      "Bash(cmd //c \"where ffmpeg\")",
+      "Bash(cmd //c \"ffmpeg -version\")",
+      "Read(//c//**)",
+      "Read(//c/Users/Thien/scoop/**)",
+      "Bash(FFMPEG=\"/c/Users/Thien/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-8.1-full_build/bin/ffmpeg.exe\" INPUT=\"D:/PERSONAL/STUDYING/Ai Learning/random topicand quotes/assets/videos/background_video_mainpage.mp4\" OUTPUT=\"D:/PERSONAL/STUDYING/Ai Learning/random topicand quotes/assets/videos/background_video_mainpage_web.mp4\" __NEW_LINE_2bc325b339d08abe__ \"$FFMPEG\" -i \"$INPUT\" -vf \"scale=1280:-2\" -c:v libx264 -crf 28 -preset fast -an -movflags +faststart -y \"$OUTPUT\")",
+      "Bash(FFMPEG=\"/c/Users/Thien/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-8.1-full_build/bin/ffmpeg.exe\" \"$FFMPEG\" -i \"D:/PERSONAL/STUDYING/Ai Learning/random topicand quotes/assets/videos/background_video_mainpage_web.mp4\")",
+      "WebFetch(domain:insighttimer.com)"
+    ]
+  }
+}
