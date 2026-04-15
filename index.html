@@ -4068,14 +4068,24 @@ const NATURE_NAMES = [
 // currentContribUser shape: { displayName, username, isAnonymous, userId, provider }
 let currentContribUser = null;
 
-// ── Supabase JS client (needed for OAuth) ──
+// --- Supabase JS client (needed for OAuth) ---
 let _sbClient = null;
+
 function getSupabaseJsClient() {
-  if (_sbClient) return _sbClient;
-  if (window.supabase && SUPABASE_URL && SUPABASE_ANON) {
-    _sbClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
-  }
-  return _sbClient;
+    if (_sbClient) return _sbClient;
+
+    // 1. Khai báo các Placeholder (Vercel sẽ điền vào đây sau)
+    const VERCEL_URL = "VITE_SUPABASE_URL_PLACEHOLDER";
+    const VERCEL_ANON = "VITE_SUPABASE_KEY_PLACEHOLDER";
+
+    // 2. Kiểm tra: Ưu tiên lấy từ config.js (local), nếu không có thì lấy Placeholder (Vercel)
+    const finalUrl = (typeof config !== 'undefined') ? config.SUPABASE_URL : VERCEL_URL;
+    const finalAnon = (typeof config !== 'undefined') ? config.SUPABASE_ANON_KEY : VERCEL_ANON;
+
+    if (window.supabase && finalUrl && finalAnon) {
+        _sbClient = window.supabase.createClient(finalUrl, finalAnon);
+    }
+    return _sbClient;
 }
 
 // ── Profiles REST helpers ──
